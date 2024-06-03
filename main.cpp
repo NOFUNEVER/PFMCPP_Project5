@@ -70,28 +70,102 @@ write 3 UDTs below that EACH have:
  You will use those in Part 3 of this project.
 
  */
-
+#include <string>
 /*
  copied UDT 1:
  */
 
+struct saucerSection
+{
+    saucerSection();
+    ~saucerSection();
+    bool attached;
+    float viewScreenWidth;
+    int decks;
+    int bridgeLength;
+    std::string shieldType;
+    std::string commandingOfficer;
+
+    bool detachSaucer();
+    bool attachSaucer();
+    float firePhasers(int pattern, float power);
+    float raiseShields();
+    std::string scanTarget();
+
+    struct bridge
+    {
+
+    };
+};
 /*
  copied UDT 2:
  */
+struct warpCoreReactor
+{
+    warpCoreReactor();
+    ~warpCoreReactor();
+    float maximumWarp;
+    float currentWarp;
+    int connectedNacelles;
 
+    struct dilithiumMatrix
+    {
+        dilithiumMatrix();
+        ~dilithiumMatrix();
+        float dilithiumCapacity;
+        float intermixRatio;
+
+
+
+    }
+
+}
 /*
  copied UDT 3:
  */
+struct warpNacelle
+{
+    struct warpCoil
+    {
 
+    }
+}
 /*
  new UDT 4:
  with 2 member functions
  */
+struct galaxyClassStarship
+{   galaxyClassStarship();
+    ~galaxyClassStarship();
+    std::string registryNumber = "NCC-XXXX";
+    std::string name = "USS ?"; 
+    float maximumWarp;
+    int numberOfCrew;
+    int numberOfShuttles;
 
+
+
+    void engageWarp();
+    void openShuttleBay();
+    void closeShuttleBay();
+    float fireTorpedoes();
+
+    saucerSection saucer;
+
+};
 /*
  new UDT 5:
  with 2 member functions
  */
+class constitutionClassStarship
+{
+    constitutionClassStarship();
+    ~constitutionClassStarship();
+    std::string registryNumber = "NCC-XXXX";
+    std::string name = "USS ?";
+
+
+}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
