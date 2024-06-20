@@ -565,7 +565,7 @@ void ShuttlePod::dockWithStarship()
 
 void ShuttlePod::enableAutopilot()
 {
-    shuttleBridge.adjustViewScreenBrightness(100.0f);
+    shuttleBridge.adjustViewScreenBrightness(10.0f);
     DilithiumMatrix.adjustIntermixRatio(1.5f);
     std::cout << "Autopilot enabled\n";
     for (int i = 0; i < 10; ++i)
