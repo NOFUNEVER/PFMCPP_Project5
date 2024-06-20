@@ -77,10 +77,10 @@ write 3 UDTs below that EACH have:
  copied UDT 1:
  */
 
-struct saucerSection
+struct SaucerSection
 {
-    saucerSection();
-    ~saucerSection();
+    SaucerSection();
+    ~SaucerSection();
 
     bool attached;
     int decks;
@@ -88,18 +88,19 @@ struct saucerSection
     std::string shieldType;
     unsigned int personnelOnboard;
 
-    bool detachSaucer();
+    bool DetachSaucer();
     float firePhasers(int pattern, float power);
     float raiseShields();
 
-    struct bridge
+    struct Bridge
     {
-        bridge();
-        ~bridge();
+
+        Bridge();
+        ~Bridge();
 
         std::string commandingOfficer;
-        int bridgeLength;
-        int bridgeWidth;
+        int BridgeLength;
+        int BridgeWidth;
         float viewScreenBrightness;
         unsigned int numberOfTerminals;
 
@@ -109,18 +110,18 @@ struct saucerSection
     };
 };
 
-// Definitions for saucerSection member functions
-saucerSection::saucerSection()
+// Definitions for SaucerSection member functions
+SaucerSection::SaucerSection()
     : attached(true), decks(10), shieldStrength(100.0f), shieldType("Standard"), personnelOnboard(1000)
 {
 }
 
-saucerSection::~saucerSection()
+SaucerSection::~SaucerSection()
 {
-    std::cout << "Destructing saucerSection\n";
+    std::cout << "Destructing SaucerSection\n";
 }
 
-bool saucerSection::detachSaucer()
+bool SaucerSection::DetachSaucer()
 {
     attached = false;
     std::cout << "Detaching saucer...\n";
@@ -131,7 +132,7 @@ bool saucerSection::detachSaucer()
     return attached;
 }
 
-float saucerSection::firePhasers(int pattern, float power)
+float SaucerSection::firePhasers(int pattern, float power)
 {
     std::cout << "Firing phasers with pattern " << pattern << " and power " << power << std::endl;
     for (int i = 0; i < 5; ++i)
@@ -142,7 +143,7 @@ float saucerSection::firePhasers(int pattern, float power)
     return power;
 }
 
-float saucerSection::raiseShields()
+float SaucerSection::raiseShields()
 {
     const float maxShieldStrength = 110.0f; // Define the max shield strength
     for (int i = 0; i < 10; ++i)
@@ -160,23 +161,23 @@ float saucerSection::raiseShields()
     return shieldStrength;
 }
 
-// Definitions for bridge member functions
-saucerSection::bridge::bridge()
-    : commandingOfficer("Captain"), bridgeLength(50), bridgeWidth(30), viewScreenBrightness(75.0f), numberOfTerminals(5)
+// Definitions for Bridge member functions
+SaucerSection::Bridge::Bridge()
+    : commandingOfficer("Captain"), BridgeLength(50), BridgeWidth(30), viewScreenBrightness(75.0f), numberOfTerminals(5)
 {
 }
 
-saucerSection::bridge::~bridge()
+SaucerSection::Bridge::~Bridge()
 {
-    std::cout << "Destructing bridge\n";
+    std::cout << "Destructing Bridge\n";
 }
 
-void saucerSection::bridge::showOnViewScreen(std::string view)
+void SaucerSection::Bridge::showOnViewScreen(std::string view)
 {
     std::cout << "Displaying " << view << " on the view screen\n";
 }
 
-int saucerSection::bridge::selfDestruct()
+int SaucerSection::Bridge::selfDestruct()
 {
     std::cout << "Initiating self-destruct sequence\n";
     for (int i = 10; i > 0; --i)
@@ -186,7 +187,7 @@ int saucerSection::bridge::selfDestruct()
     return 0;
 }
 
-float saucerSection::bridge::adjustViewScreenBrightness(float brightness)
+float SaucerSection::Bridge::adjustViewScreenBrightness(float brightness)
 {
     const float tolerance = 0.01f; // Define a small tolerance
     while (std::fabs(viewScreenBrightness - brightness) > tolerance) // Use std::fabs here
@@ -204,10 +205,10 @@ float saucerSection::bridge::adjustViewScreenBrightness(float brightness)
 /*
  copied UDT 2:
  */
-struct warpCoreReactor
+struct WarpCoreReactor
 {
-    warpCoreReactor();
-    ~warpCoreReactor();
+    WarpCoreReactor();
+    ~WarpCoreReactor();
 
     float maximumWarp;
     float currentWarp;
@@ -215,10 +216,10 @@ struct warpCoreReactor
     float reactorTemperature;
     std::string status;
 
-    struct dilithiumMatrix
+    struct DilithiumMatrix
     {
-        dilithiumMatrix();
-        ~dilithiumMatrix();
+        DilithiumMatrix();
+        ~DilithiumMatrix();
 
         float dilithiumCapacity;
         float intermixRatio;
@@ -236,18 +237,18 @@ struct warpCoreReactor
     float getWarpEfficiency();
 };
 
-// Definitions for warpCoreReactor member functions
-warpCoreReactor::warpCoreReactor()
+// Definitions for WarpCoreReactor member functions
+WarpCoreReactor::WarpCoreReactor()
     : maximumWarp(9.9f), currentWarp(0.0f), connectedNacelles(2), reactorTemperature(300.0f), status("Operational")
 {
 }
 
-warpCoreReactor::~warpCoreReactor()
+WarpCoreReactor::~WarpCoreReactor()
 {
-    std::cout << "Destructing warpCoreReactor\n";
+    std::cout << "Destructing WarpCoreReactor\n";
 }
 
-void warpCoreReactor::engageWarp(float warpFactor)
+void WarpCoreReactor::engageWarp(float warpFactor)
 {
     currentWarp = warpFactor;
     std::cout << "Engaging warp to factor " << warpFactor << std::endl;
@@ -260,7 +261,7 @@ void warpCoreReactor::engageWarp(float warpFactor)
     }
 }
 
-void warpCoreReactor::shutdownWarp()
+void WarpCoreReactor::shutdownWarp()
 {
     std::cout << "Shutting down warp\n";
     while (currentWarp > 0.0f)
@@ -272,25 +273,25 @@ void warpCoreReactor::shutdownWarp()
     }
 }
 
-float warpCoreReactor::getWarpEfficiency()
+float WarpCoreReactor::getWarpEfficiency()
 {
     float efficiency = (currentWarp / maximumWarp) * 100.0f;
     std::cout << "Warp efficiency: " << efficiency << "%\n";
     return efficiency;
 }
 
-// Definitions for dilithiumMatrix member functions
-warpCoreReactor::dilithiumMatrix::dilithiumMatrix()
+// Definitions for DilithiumMatrix member functions
+WarpCoreReactor::DilithiumMatrix::DilithiumMatrix()
     : dilithiumCapacity(100.0f), intermixRatio(1.0f), matrixStability(true), crystalCount(10), matrixTemperature(250.0f)
 {
 }
 
-warpCoreReactor::dilithiumMatrix::~dilithiumMatrix()
+WarpCoreReactor::DilithiumMatrix::~DilithiumMatrix()
 {
-    std::cout << "Destructing dilithiumMatrix\n";
+    std::cout << "Destructing DilithiumMatrix\n";
 }
 
-float warpCoreReactor::dilithiumMatrix::adjustIntermixRatio(float newRatio)
+float WarpCoreReactor::DilithiumMatrix::adjustIntermixRatio(float newRatio)
 {
     const float tolerance = 0.01f; // Define a small tolerance
     while (std::fabs(intermixRatio - newRatio) > tolerance) // Use std::fabs here
@@ -304,7 +305,7 @@ float warpCoreReactor::dilithiumMatrix::adjustIntermixRatio(float newRatio)
     return intermixRatio;
 }
 
-bool warpCoreReactor::dilithiumMatrix::replaceDilithiumCrystals(float newCapacity)
+bool WarpCoreReactor::DilithiumMatrix::replaceDilithiumCrystals(float newCapacity)
 {
     for (int i = 0; i < crystalCount; ++i)
     {
@@ -314,7 +315,7 @@ bool warpCoreReactor::dilithiumMatrix::replaceDilithiumCrystals(float newCapacit
     return true;
 }
 
-void warpCoreReactor::dilithiumMatrix::monitorMatrix()
+void WarpCoreReactor::DilithiumMatrix::monitorMatrix()
 {
     for (int i = 0; i < 5; ++i)
     {
@@ -327,10 +328,10 @@ void warpCoreReactor::dilithiumMatrix::monitorMatrix()
 /*
  copied UDT 3:
  */
-struct warpNacelle
+struct WarpNacelle
 {
-    warpNacelle();
-    ~warpNacelle();
+    WarpNacelle();
+    ~WarpNacelle();
 
     int nacelleID;
     float warpFieldStability;
@@ -338,10 +339,10 @@ struct warpNacelle
     int coilCount;
     float energyConsumption;
 
-    struct warpCoil
+    struct WarpCoil
     {
-        warpCoil();
-        ~warpCoil();
+        WarpCoil();
+        ~WarpCoil();
 
         float coilInductance;
         float coilResistance;
@@ -359,18 +360,18 @@ struct warpNacelle
     float checkNacelleIntegrity();
 };
 
-// Definitions for warpNacelle member functions
-warpNacelle::warpNacelle()
+// Definitions for WarpNacelle member functions
+WarpNacelle::WarpNacelle()
     : nacelleID(1), warpFieldStability(100.0f), operational(true), coilCount(4), energyConsumption(500.0f)
 {
 }
 
-warpNacelle::~warpNacelle()
+WarpNacelle::~WarpNacelle()
 {
-    std::cout << "Destructing warpNacelle\n";
+    std::cout << "Destructing WarpNacelle\n";
 }
 
-void warpNacelle::activateNacelle()
+void WarpNacelle::activateNacelle()
 {
     const float maxWarpFieldStability = 110.0f; // Define the max warp field stability
     operational = true;
@@ -391,7 +392,7 @@ void warpNacelle::activateNacelle()
     }
 }
 
-void warpNacelle::deactivateNacelle()
+void WarpNacelle::deactivateNacelle()
 {
     operational = false;
     std::cout << "Deactivating nacelle " << nacelleID << std::endl;
@@ -404,24 +405,24 @@ void warpNacelle::deactivateNacelle()
     }
 }
 
-float warpNacelle::checkNacelleIntegrity()
+float WarpNacelle::checkNacelleIntegrity()
 {
     std::cout << "Checking nacelle integrity: " << warpFieldStability << "%\n";
     return warpFieldStability;
 }
 
-// Definitions for warpCoil member functions
-warpNacelle::warpCoil::warpCoil()
+// Definitions for WarpCoil member functions
+WarpNacelle::WarpCoil::WarpCoil()
     : coilInductance(0.0f), coilResistance(0.0f), isActive(false), coilID(1), coilTemperature(20.0f)
 {
 }
 
-warpNacelle::warpCoil::~warpCoil()
+WarpNacelle::WarpCoil::~WarpCoil()
 {
-    std::cout << "Destructing warpCoil\n";
+    std::cout << "Destructing WarpCoil\n";
 }
 
-void warpNacelle::warpCoil::activateCoil()
+void WarpNacelle::WarpCoil::activateCoil()
 {
     const float maxCoilInductance = 110.0f; // Define the max coil inductance
     isActive = true;
@@ -442,7 +443,7 @@ void warpNacelle::warpCoil::activateCoil()
     }
 }
 
-void warpNacelle::warpCoil::deactivateCoil()
+void WarpNacelle::WarpCoil::deactivateCoil()
 {
     isActive = false;
     std::cout << "Deactivating coil\n";
@@ -455,7 +456,7 @@ void warpNacelle::warpCoil::deactivateCoil()
     }
 }
 
-float warpNacelle::warpCoil::getCoilEfficiency()
+float WarpNacelle::WarpCoil::getCoilEfficiency()
 {
     float efficiency = (coilInductance / coilResistance) * 100.0f;
     std::cout << "Coil efficiency: " << efficiency << "%\n";
@@ -466,37 +467,37 @@ float warpNacelle::warpCoil::getCoilEfficiency()
  new UDT 4:
  with 2 member functions
  */
-struct galaxyClassStarship
+struct GalaxyClassStarship
 {
-    galaxyClassStarship();
-    ~galaxyClassStarship();
+    GalaxyClassStarship();
+    ~GalaxyClassStarship();
 
-    saucerSection mainSaucer;
-    warpCoreReactor coreReactor;
-    warpNacelle nacelle;
+    SaucerSection mainSaucer;
+    WarpCoreReactor coreReactor;
+    WarpNacelle nacelle;
 
     void engageWarp(float speed);
     void scanForLifeForms();
     void activateCloakingDevice();
 };
 
-// Definitions for galaxyClassStarship member functions
-galaxyClassStarship::galaxyClassStarship()
+// Definitions for GalaxyClassStarship member functions
+GalaxyClassStarship::GalaxyClassStarship()
 {
 }
 
-galaxyClassStarship::~galaxyClassStarship()
+GalaxyClassStarship::~GalaxyClassStarship()
 {
-    std::cout << "Destructing galaxyClassStarship\n";
+    std::cout << "Destructing GalaxyClassStarship\n";
 }
 
-void galaxyClassStarship::engageWarp(float speed)
+void GalaxyClassStarship::engageWarp(float speed)
 {
     coreReactor.engageWarp(speed);
     std::cout << "Warp engaged to speed " << speed << std::endl;
 }
 
-void galaxyClassStarship::scanForLifeForms()
+void GalaxyClassStarship::scanForLifeForms()
 {
     std::cout << "Scanning for life forms\n";
     for (int i = 0; i < 5; ++i)
@@ -505,7 +506,7 @@ void galaxyClassStarship::scanForLifeForms()
     }
 }
 
-void galaxyClassStarship::activateCloakingDevice()
+void GalaxyClassStarship::activateCloakingDevice()
 {
     mainSaucer.raiseShields();
     std::cout << "Cloaking device activated\n";
@@ -518,54 +519,54 @@ void galaxyClassStarship::activateCloakingDevice()
  new UDT 5:
  with 2 member functions
  */
-struct shuttlePod
+struct ShuttlePod
 {
-    shuttlePod();
-    ~shuttlePod();
+    ShuttlePod();
+    ~ShuttlePod();
 
-    saucerSection::bridge shuttleBridge;
-    warpCoreReactor::dilithiumMatrix dilithiumMatrix;
-    warpNacelle warpNacellePart;
+    SaucerSection::Bridge shuttleBridge;
+    WarpCoreReactor::DilithiumMatrix DilithiumMatrix;
+    WarpNacelle WarpNacellePart;
 
     void setCourse(std::string destination);
     void dockWithStarship();
     void enableAutopilot();
 };
 
-// Definitions for shuttlePod member functions
-shuttlePod::shuttlePod()
+// Definitions for ShuttlePod member functions
+ShuttlePod::ShuttlePod()
 {
 }
 
-shuttlePod::~shuttlePod()
+ShuttlePod::~ShuttlePod()
 {
-    std::cout << "Destructing shuttlePod\n";
+    std::cout << "Destructing ShuttlePod\n";
 }
 
-void shuttlePod::setCourse(std::string destination)
+void ShuttlePod::setCourse(std::string destination)
 {
     std::cout << "Setting course to " << destination << std::endl;
     for (int i = 0; i < 10; ++i)
     {
-        warpNacellePart.activateNacelle();
+        WarpNacellePart.activateNacelle();
         std::cout << "Course set. Increasing speed to reach " << destination << std::endl;
     }
 }
 
-void shuttlePod::dockWithStarship()
+void ShuttlePod::dockWithStarship()
 {
     std::cout << "Docking with starship\n";
-    while (warpNacellePart.warpFieldStability > 0.0f)
+    while (WarpNacellePart.warpFieldStability > 0.0f)
     {
-        warpNacellePart.deactivateNacelle();
+        WarpNacellePart.deactivateNacelle();
         std::cout << "Decreasing speed for docking\n";
     }
 }
 
-void shuttlePod::enableAutopilot()
+void ShuttlePod::enableAutopilot()
 {
     shuttleBridge.adjustViewScreenBrightness(100.0f);
-    dilithiumMatrix.adjustIntermixRatio(1.5f);
+    DilithiumMatrix.adjustIntermixRatio(1.5f);
     std::cout << "Autopilot enabled\n";
     for (int i = 0; i < 10; ++i)
     {
@@ -593,8 +594,8 @@ int main()
 {
 
     // Instantiate UDTs from step 4
-    galaxyClassStarship enterprise;
-    shuttlePod galileo;
+    GalaxyClassStarship enterprise;
+    ShuttlePod galileo;
 
     // Call their member functions
     enterprise.engageWarp(9.5f);
