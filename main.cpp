@@ -99,8 +99,8 @@ struct SaucerSection
         ~Bridge();
 
         std::string commandingOfficer;
-        int BridgeLength;
-        int BridgeWidth;
+        int bridgeLength;
+        int bridgeWidth;
         float viewScreenBrightness;
         unsigned int numberOfTerminals;
 
@@ -163,7 +163,7 @@ float SaucerSection::raiseShields()
 
 // Definitions for Bridge member functions
 SaucerSection::Bridge::Bridge()
-    : commandingOfficer("Captain"), BridgeLength(50), BridgeWidth(30), viewScreenBrightness(75.0f), numberOfTerminals(5)
+    : commandingOfficer("Captain"), bridgeLength(50), bridgeWidth(30), viewScreenBrightness(75.0f), numberOfTerminals(5)
 {
 }
 
