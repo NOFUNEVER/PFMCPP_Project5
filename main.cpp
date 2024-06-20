@@ -88,7 +88,7 @@ struct SaucerSection
     std::string shieldType;
     unsigned int personnelOnboard;
 
-    bool DetachSaucer();
+    bool detachSaucer();
     float firePhasers(int pattern, float power);
     float raiseShields();
 
@@ -121,7 +121,7 @@ SaucerSection::~SaucerSection()
     std::cout << "Destructing SaucerSection\n";
 }
 
-bool SaucerSection::DetachSaucer()
+bool SaucerSection::detachSaucer()
 {
     attached = false;
     std::cout << "Detaching saucer...\n";
